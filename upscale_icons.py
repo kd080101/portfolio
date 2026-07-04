@@ -21,6 +21,12 @@ ICONS = [
     "assets/website.png",
     "assets/hr.png",
     "assets/crm.png",
+    "assets/dhise.webp",
+    "assets/french_retro.png",
+    "assets/green_rock.webp",
+    "assets/iskcon.webp",
+    "assets/kik_trading.webp",
+    "assets/sasmar.webp",
 ]
 
 TARGET_SIZE = (400, 400)
