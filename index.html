@@ -10,13 +10,13 @@
         <meta name="keywords" content="Kevin Desai, Odoo Developer, BrowseInfo, Odoo Migration, OWL JS, Odoo POS, Odoo Website, Odoo Integrations, Enterprise Application Engineer">
         <meta name="author" content="Kevin Desai">
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-        <link rel="canonical" href="https://kevindesai.dev/">
+        <link rel="canonical" href="https://portfolio-4a0.pages.dev/">
 
         <!-- Open Graph -->
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Kevin Desai">
         <meta property="og:locale" content="en_US">
-        <meta property="og:url" content="https://kevindesai.dev/">
+        <meta property="og:url" content="https://portfolio-4a0.pages.dev/">
         <meta property="og:title" content="Kevin Desai | Odoo Developer — BrowseInfo">
         <meta property="og:description" content="Jr. Enterprise Application Engineer at BrowseInfo. 3+ years across Odoo 15–19, 1500+ modules migrated, custom client projects and integrations.">
 
@@ -169,13 +169,104 @@
             .navlinks a:focus-visible, a:focus-visible{outline:2px solid var(--sky);outline-offset:3px;}
             @media(max-width:700px){.navlinks{display:none;}}
 
+            .menu-toggle{
+                display:none;
+                width:42px;
+                height:42px;
+                border:none;
+                background:transparent;
+                cursor:pointer;
+                padding:0;
+                z-index:101;
+            }
+            .menu-toggle span{
+                display:block;
+                width:24px;
+                height:2px;
+                margin:5px auto;
+                background:var(--sky-dim);
+                transition:.3s;
+            }
+            .menu-toggle.active span:nth-child(1){
+                transform:translateY(7px) rotate(45deg);
+            }
+            .menu-toggle.active span:nth-child(2){
+                opacity:0;
+            }
+            .menu-toggle.active span:nth-child(3){
+                transform:translateY(-7px) rotate(-45deg);
+            }
+            @media (max-width:700px){
+                .menu-toggle{
+                    display:block;
+                }
+                .navlinks{
+                    position:absolute;
+                    top:100%;
+                    left:0;
+                    right:0;
+                    display:flex;
+                    flex-direction:column;
+                    align-items:flex-start;
+                    gap:18px;
+                    padding:24px;
+                    background:rgba(255,255,255,.95);
+                    backdrop-filter:blur(20px);
+                    border-bottom:1px solid var(--line);
+                    transform:translateY(-20px);
+                    opacity:0;
+                    visibility:hidden;
+                    transition:.25s ease;
+                }
+                .navlinks.open{
+                    transform:translateY(0);
+                    opacity:1;
+                    visibility:visible;
+                }
+                .build-pct{
+                    display:none;
+                }
+                .section-head{
+                    top:72px;
+                    padding:10px 18px;
+                }
+
+                .section-title{
+                    font-size:20px;
+                }
+
+                .section-num{
+                    padding:5px 10px;
+                    font-size:12px;
+                }
+            }
+
             /* hero */
             .hero{
-                min-height:100vh;
-                display:flex;flex-direction:column;justify-content:center;
-                padding:120px 6vw 60px;
+                position:relative;
+                width:100%;
                 max-width:1100px;
+                margin:90px auto 40px;
+                padding:60px;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                background:rgba(2,132,199,.10);
+                backdrop-filter:blur(22px);
+                -webkit-backdrop-filter:blur(22px);
+                border:1px solid rgba(2,132,199,.20);
+                border-radius:28px;
+                box-shadow:0 20px 60px rgba(2,132,199,.08), inset 0 1px 0 rgba(255,255,255,.45);
+                overflow:hidden;
             }
+            .hero::before{
+                content:"";
+                position:absolute;
+                inset:0;
+                background:radial-gradient(circle at 15% 15%,rgba(255,255,255,.45),transparent 40%);
+                pointer-events:none;
+            }
+            .hero>*{position:relative;z-index:1;}
             .eyebrow{font-family:var(--mono);color:var(--sky);font-size:13px;letter-spacing:.08em;margin-bottom:18px;}
             .eyebrow::before{content:'> ';color:var(--muted);}
             h1{
@@ -201,6 +292,7 @@
 
             /* terminal signature */
             .terminal{
+                max-width:560px;
                 background:var(--panel);
                 border:1px solid var(--line);
                 border-radius:8px;
@@ -244,9 +336,39 @@
 
             /* sections */
             section{padding:100px 6vw;max-width:1100px;margin:0 auto;}
-            .section-head{margin-bottom:48px;}
-            .section-num{font-family:var(--mono);color:var(--sky);font-size:13px;margin-bottom:8px;}
-            .section-title{font-family:var(--display);font-weight:700;letter-spacing:-0.01em;font-size:clamp(24px,3vw,34px);color:var(--text);}
+            .section-head{
+                top:84px;
+                z-index:20;
+                display:inline-flex;
+                align-items:center;
+                gap:12px;
+                padding:12px 22px;
+                margin-bottom:42px;
+                background:rgba(2,132,199,.12);
+                backdrop-filter:blur(18px);
+                -webkit-backdrop-filter:blur(18px);
+                border:1px solid rgba(2,132,199,.25);
+                border-radius:999px;
+                box-shadow:
+                    0 8px 30px rgba(2,132,199,.08),
+                    inset 0 1px 0 rgba(255,255,255,.35);
+            }
+            .section-num{
+                margin:0;
+                padding:6px 12px;
+                background:rgba(2,132,199,.12);
+                border:1px solid rgba(2,132,199,.22);
+                border-radius:999px;
+                color:var(--sky);
+                font-family:var(--mono);
+                font-weight:700;
+            }
+            .section-title{
+                margin:0;
+                font-size:clamp(22px,3vw,30px);
+                font-weight:700;
+                color:var(--text);
+            }
 
             /* stats */
             .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
@@ -258,14 +380,56 @@
             @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
 
             /* about */
-            .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;}
+            .about-grid{
+                display:grid;
+                grid-template-columns:1.3fr 1fr;
+                gap:50px;
+                position:relative;
+                padding:42px;
+                background:rgba(2,132,199,.10);
+                backdrop-filter:blur(22px);
+                -webkit-backdrop-filter:blur(22px);
+                border:1px solid rgba(2,132,199,.20);
+                border-radius:28px;
+                box-shadow:0 20px 60px rgba(2,132,199,.08),inset 0 1px 0 rgba(255,255,255,.45);
+                overflow:hidden;
+            }
+            .about-grid::before{
+                content:"";
+                position:absolute;
+                inset:0;
+                background:radial-gradient(circle at 15% 15%,rgba(255,255,255,.45),transparent 40%);
+                pointer-events:none;
+            }
+            .about-text{
+                background:rgba(2,132,199,.10);
+                backdrop-filter:blur(22px);
+                -webkit-backdrop-filter:blur(22px);
+                border:1px solid rgba(2,132,199,.18);
+                border-radius:22px;
+                padding:30px;
+                box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 12px 30px rgba(2,132,199,.08);
+            }
             .about-text p{color:var(--muted);margin-bottom:16px;}
             .about-text b{color:var(--text);}
-            .stack-box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;}
+            .stack-box{
+                background:rgba(255,255,255,.55);
+                backdrop-filter:blur(14px);
+                border:1px solid rgba(2,132,199,.15);
+                border-radius:18px;
+                padding:22px;
+                box-shadow:none;
+            }
             .stack-box h4{font-family:var(--mono);color:var(--sky);font-size:13px;margin-bottom:14px;letter-spacing:.05em;}
             .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
             .tag{font-family:var(--mono);font-size:11.5px;color:var(--text);background:var(--bg-alt);border:1px solid var(--line);padding:5px 10px;border-radius:5px;}
-            @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+            @media(max-width:800px){
+                .about-grid{
+                    grid-template-columns:1fr;
+                    padding:24px;
+                    border-radius:22px;
+                }
+            }
 
             /* experience timeline (log format, not numbered - it's chronological commits) */
             .log{font-family:var(--mono);font-size:13px;}
@@ -276,11 +440,47 @@
             .log-entry:last-child{border-bottom:none;}
             .log-hash{color:var(--muted);}
             .log-hash .commit{color:var(--sky);}
+            .log-msg{
+                background:rgba(2,132,199,.10);
+                backdrop-filter:blur(22px);
+                -webkit-backdrop-filter:blur(22px);
+                border:1px solid rgba(2,132,199,.18);
+                border-radius:18px;
+                padding:24px;
+                box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 12px 30px rgba(2,132,199,.08);
+            }
             .log-msg h4{font-family:var(--sans);color:var(--text);font-size:16px;margin-bottom:6px;font-weight:600;}
             .log-msg p{color:var(--muted);font-size:14px;font-family:var(--sans);margin-bottom:10px;}
             .log-tags{display:flex;flex-wrap:wrap;gap:6px;}
             .log-tags span{font-size:11px;color:var(--sky-dim);border:1px solid var(--line);padding:3px 8px;border-radius:4px;}
             @media(max-width:700px){.log-entry{grid-template-columns:1fr;gap:6px;}}
+
+            /* experience glass */
+            .experience-glass{
+                position:relative;
+                padding:42px;
+                background:rgba(2,132,199,.10);
+                backdrop-filter:blur(22px);
+                -webkit-backdrop-filter:blur(22px);
+                border:1px solid rgba(2,132,199,.20);
+                border-radius:28px;
+                box-shadow:0 20px 60px rgba(2,132,199,.08),inset 0 1px 0 rgba(255,255,255,.45);
+                overflow:hidden;
+            }
+            .experience-glass::before{
+                content:"";
+                position:absolute;
+                inset:0;
+                background:radial-gradient(circle at 15% 15%,rgba(255,255,255,.45),transparent 40%);
+                pointer-events:none;
+            }
+            .experience-glass>*{position:relative;z-index:1;}
+            @media(max-width:800px){
+                .hero,.experience-glass{
+                    border-radius:22px;
+                    padding:24px;
+                }
+            }
 
             /* projects */
             /* stacked scroll cards — signature element for this section */
@@ -297,7 +497,16 @@
                 overflow:hidden;
                 margin-bottom:24px;
             }
-            .stack-card .card-text{padding:44px 44px 36px;display:flex;flex-direction:column;justify-content:center;}
+            .stack-card .card-text{
+                padding:44px 44px 36px;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                background:rgba(2,132,199,.10);
+                backdrop-filter:blur(22px);
+                -webkit-backdrop-filter:blur(22px);
+                border-right:1px solid rgba(2,132,199,.15);
+            }
             .stack-card .card-eyebrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
             .stack-card .card-num{font-family:var(--mono);color:var(--sky);font-size:13px;font-weight:600;}
             .stack-card .card-tag{font-family:var(--mono);color:var(--muted);font-size:11px;letter-spacing:.08em;}
@@ -345,7 +554,6 @@
             footer{text-align:center;padding:30px;color:var(--muted);font-family:var(--mono);font-size:12px;border-top:1px solid var(--line);}
         </style>
     </head>
-
     <body>
         <div class="grid-bg" id="gridBg"></div>
         <div class="app-bg" aria-hidden="true">
@@ -377,11 +585,16 @@
 
         <nav>
             <div class="logo">KD</div>
-            <div class="navlinks">
-                <a href="#about">about</a>
-                <a href="#experience">experience</a>
-                <a href="#projects">projects</a>
-                <a href="#contact">contact</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navlinks"  id="navMenu">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
                 <span class="build-pct" id="buildPct">build: 0%</span>
             </div>
         </nav>
@@ -468,7 +681,8 @@
                 <div class="section-num">02</div>
                 <div class="section-title">Experience</div>
             </div>
-            <div class="log">
+            <div class="experience-glass">
+<div class="log">
                 <div class="log-entry stagger-child">
                     <div class="log-hash"><span class="commit">2023&ndash;Now</span></div>
                     <div class="log-msg">
@@ -623,9 +837,8 @@
         </div>
 
         <section id="contact" class="contact reveal">
-            <div class="section-num" style="text-align:center;">04</div>
-            <h2>Let's build something.</h2>
-            <p>Odoo backend, POS, website, or integration work &mdash; happy to talk.</p>
+            <h3>Need help with Odoo development or customization?</h3>
+            <p style="font-size: 14px;">Odoo backend, POS, website, or integration work &mdash; happy to talk.</p>
             <div class="contact-links">
                 <a href="mailto:patelkevin853@gmail.com" class="btn primary">Email Me</a>
                 <a href="https://www.linkedin.com/in/kevin-desai-540014243" class="btn ghost" target="_blank">LinkedIn</a>
@@ -760,6 +973,45 @@
             const track = document.getElementById('clientsTrack');
             const full = [...clientNames, ...clientNames];
             track.innerHTML = full.map(n => `<span>${n}</span><span style="color:var(--line)">&bull;</span>`).join('');
+
+            const menuToggle=document.getElementById("menuToggle");
+            const navMenu=document.getElementById("navMenu");
+
+            menuToggle.addEventListener("click",()=>{
+                menuToggle.classList.toggle("active");
+                navMenu.classList.toggle("open");
+                document.body.style.overflow=
+                    navMenu.classList.contains("open")
+                    ? "hidden"
+                    : "";
+            });
+
+            document.querySelectorAll(".navlinks a").forEach(link=>{
+                link.addEventListener("click",()=>{
+                    menuToggle.classList.remove("active");
+                    navMenu.classList.remove("open");
+                    document.body.style.overflow="";
+                });
+            });
+
+            document.addEventListener("click",(e)=>{
+                if(
+                    !navMenu.contains(e.target) &&
+                    !menuToggle.contains(e.target)
+                ){
+                    menuToggle.classList.remove("active");
+                    navMenu.classList.remove("open");
+                    document.body.style.overflow="";
+                }
+            });
+
+            document.addEventListener("keydown",(e)=>{
+                if(e.key==="Escape"){
+                    menuToggle.classList.remove("active");
+                    navMenu.classList.remove("open");
+                    document.body.style.overflow="";
+                }
+            });
         </script>
     </body>
 </html>
